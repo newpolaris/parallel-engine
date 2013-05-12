@@ -1,22 +1,23 @@
 package prl.logic.manager;
 
+import prl.annotation.AbstractLogic;
 import prl.interf.Managable;
 
 public class DiskManagerLogic implements Managable {
 
-	@Override
-	public void stopManager() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
+	@Override @AbstractLogic
 	public void startManager() {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
+	@Override @AbstractLogic
+	public void stopManager() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override @AbstractLogic
 	public boolean needToDoEveryFrame() {
 		// TODO Auto-generated method stub
 		return false;

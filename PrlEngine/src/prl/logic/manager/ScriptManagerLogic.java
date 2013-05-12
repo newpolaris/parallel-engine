@@ -1,49 +1,50 @@
 package prl.logic.manager;
 
+import prl.annotation.AbstractLogic;
+import prl.injectable.ScriptManagerInjectable;
 import prl.interf.Managable;
 
+@AbstractLogic
 public class ScriptManagerLogic implements Managable {
 
-	@Override
-	public void stopManager() {
-		// TODO Auto-generated method stub
-
+	ScriptManagerInjectable scriptManagerInj;
+	
+	public ScriptManagerLogic( ScriptManagerInjectable scriptManagerInj ) {
+		this.scriptManagerInj = scriptManagerInj;
+	}
+	
+	@Override @AbstractLogic
+	public void startManager() {
+		scriptManagerInj.bootScript();
 	}
 
-	@Override
-	public void startManager() {
-		// TODO Auto-generated method stub
-
+	@Override @AbstractLogic
+	public void stopManager() {
+		scriptManagerInj.shutdownScript();
 	}
 
 	@Override
 	public boolean needToDoEveryFrame() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public void beforeDoFrame() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void doFrame() {
-		// TODO Auto-generated method stub
-
+		// we may want to load script dynamically at run-time
 	}
 
 	@Override
 	public void afterDoFrame() {
-		// TODO Auto-generated method stub
-
 	}
 
-	@Override
+	@Override @AbstractLogic
+	public void doFrame() {
+		scriptManagerInj.tick();
+	}
+
+	@Override @AbstractLogic
 	public Boolean isExitRequested() {
-		// TODO Auto-generated method stub
-		return null;
+		return scriptManagerInj.isExitRequested();
 	}
 
 }
