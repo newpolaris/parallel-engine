@@ -4,31 +4,46 @@ import java.util.List;
 
 import prl.injectable.ScriptManagerInjectable;
 import prl.interf.AssetManagable;
+import prl.interf.Renderable;
 import prl.interf.Schedulable;
-import prl.interf.asset.Audible;
-import prl.interf.asset.Renderable;
+import prl.interf.asset.SoundAsset;
+import prl.interf.game.GameLevel;
+import prl.interf.game.GameWorld;
 
 public class ScriptManagerSimpleTestImpl implements ScriptManagerInjectable {
 
-	public Schedulable schedular;
 	public AssetManagable assetManager;
-	public List< Renderable > renderables;
-	public List< Audible > audibles;
+	public Schedulable schedular;
 	
-	public ScriptManagerSimpleTestImpl( Schedulable schedular )
+	public GameWorld gameWorld;
+	public List< GameLevel > gameLevels;
+	
+	public ScriptManagerSimpleTestImpl( AssetManagable assetManager, Schedulable schedular )
 	{
+		this.assetManager = assetManager;
 		this.schedular = schedular;
+		this.gameWorld = new SimpleTestGameWorld();
 	}
 	
 	@Override
 	public void bootScript() {
-		loadLevel();
-		spawnPlayer();
+		this.spawnBootLevel();
+		this.spawnBootObjects();
 	}
 
-	private void loadLevel() {
-		renderables = assetManager.getRenderables();
-		audibles = assetManager.getAudibles();
+	private void spawnBootLevel() {
+		assetManager.getLevelList();
+		return assetManager.loadLevel();
+	}
+
+	private void spawnBootObjects() {
+		this.spawnCamera();
+		this.spawnPlayer();
+	}
+
+	private void spawnCamera() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private void spawnPlayer() {
