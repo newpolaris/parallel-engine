@@ -1,14 +1,15 @@
 package prl.logic.manager;
 
 import java.util.List;
+import java.util.LinkedList;
 
 import prl.annotation.AbstractLogic;
 import prl.injectable.SceneManagerInjectable;
-import prl.interf.managable.PhysicsManagerToSceneManagerInterface;
 import prl.interf.managable.SceneManagable;
-import prl.interf.managable.SceneManagerToDiskManagerInterface;
-import prl.interf.managable.SceneManagerToRenderingManagerInterface;
-import prl.interf.managable.ScriptManagerToSceneManagerInterface;
+import prl.interf.managable.communication.PhysicsManagerToSceneManagerInterface;
+import prl.interf.managable.communication.SceneManagerToDiskManagerInterface;
+import prl.interf.managable.communication.SceneManagerToRenderingManagerInterface;
+import prl.interf.managable.communication.ScriptManagerToSceneManagerInterface;
 
 public class SceneManagerLogic implements SceneManagable,
 		ScriptManagerToSceneManagerInterface,
@@ -45,7 +46,15 @@ public class SceneManagerLogic implements SceneManagable,
 	}
 
 	@Override
+	@AbstractLogic
 	public void afterDoFrame() {
+		List<String> requestedSceneNames = this.requestedSceneNames;
+		this.requestedSceneNames = new LinkedList<String>();
+		for( String sceneName : requestedSceneNames )
+		{
+			diskManager.loadScene( sceneName );
+			currentSceneNames.add( sceneName );
+		}
 	}
 
 	@Override
@@ -57,8 +66,8 @@ public class SceneManagerLogic implements SceneManagable,
 		return false;
 	}
 
-	public List<String> currentSceneNames;
-	public List<String> requestedSceneNames;
+	public List<String> currentSceneNames = new LinkedList<String>();
+	public List<String> requestedSceneNames = new LinkedList<String>();
 
 	@Override
 	public void appendScene(String sceneName) {

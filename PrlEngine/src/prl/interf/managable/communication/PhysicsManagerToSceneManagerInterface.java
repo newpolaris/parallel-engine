@@ -1,4 +1,4 @@
-package prl.interf.managable;
+package prl.interf.managable.communication;
 
 public interface PhysicsManagerToSceneManagerInterface {
 

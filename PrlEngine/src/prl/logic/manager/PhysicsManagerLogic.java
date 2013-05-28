@@ -2,7 +2,7 @@ package prl.logic.manager;
 
 import prl.injectable.PhysicsManagerInjectable;
 import prl.interf.managable.PhysicsManagable;
-import prl.interf.managable.PhysicsManagerToSceneManagerInterface;
+import prl.interf.managable.communication.PhysicsManagerToSceneManagerInterface;
 
 public class PhysicsManagerLogic implements PhysicsManagable {
 

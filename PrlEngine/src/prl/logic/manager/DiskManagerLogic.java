@@ -2,7 +2,7 @@ package prl.logic.manager;
 
 import prl.annotation.AbstractLogic;
 import prl.interf.managable.DiskManagable;
-import prl.interf.managable.SceneManagerToDiskManagerInterface;
+import prl.interf.managable.communication.SceneManagerToDiskManagerInterface;
 
 public class DiskManagerLogic implements DiskManagable, SceneManagerToDiskManagerInterface {
 

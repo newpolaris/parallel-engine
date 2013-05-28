@@ -5,7 +5,7 @@ import prl.injectable.ScriptManagerInjectable;
 import prl.interf.Schedulable;
 import prl.interf.managable.SceneManagable;
 import prl.interf.managable.ScriptManagable;
-import prl.interf.managable.ScriptManagerToSceneManagerInterface;
+import prl.interf.managable.communication.ScriptManagerToSceneManagerInterface;
 
 public class ScriptManagerLogic implements ScriptManagable {
 
