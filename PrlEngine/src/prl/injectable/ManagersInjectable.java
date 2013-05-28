@@ -2,7 +2,7 @@ package prl.injectable;
 
 import java.util.List;
 
-import prl.interf.Managable;
+import prl.interf.managable.Managable;
 
 public interface ManagersInjectable {
 

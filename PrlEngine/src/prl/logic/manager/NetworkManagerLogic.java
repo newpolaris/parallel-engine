@@ -1,8 +1,8 @@
 package prl.logic.manager;
 
-import prl.interf.Managable;
+import prl.interf.managable.NetworkManagable;
 
-public class NetworkManagerLogic implements Managable {
+public class NetworkManagerLogic implements NetworkManagable {
 
 	@Override
 	public void stopManager() {

@@ -2,19 +2,23 @@ package prl.logic.manager;
 
 import prl.annotation.AbstractLogic;
 import prl.injectable.ScriptManagerInjectable;
-import prl.interf.Managable;
+import prl.interf.managable.SceneManagable;
+import prl.interf.managable.ScriptManagable;
 
-public class ScriptManagerLogic implements Managable {
+public class ScriptManagerLogic implements ScriptManagable {
 
-	ScriptManagerInjectable scriptManagerInj;
+	public ScriptManagerInjectable scriptManagerInj;
+	public SceneManagable sceneManager;
 
-	public ScriptManagerLogic(ScriptManagerInjectable scriptManagerInj) {
+	public ScriptManagerLogic(ScriptManagerInjectable scriptManagerInj, SceneManagable sceneManager) {
 		this.scriptManagerInj = scriptManagerInj;
+		this.sceneManager = sceneManager;
 	}
 
 	@Override
 	@AbstractLogic
 	public void startManager() {
+		this.sceneManager.setScene( this.scriptManagerInj.getBootSceneName() );
 		scriptManagerInj.bootScript();
 	}
 

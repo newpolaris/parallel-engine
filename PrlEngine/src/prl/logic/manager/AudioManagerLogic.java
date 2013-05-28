@@ -1,8 +1,8 @@
 package prl.logic.manager;
 
-import prl.interf.Managable;
+import prl.interf.managable.AudioManagable;
 
-public class AudioManagerLogic implements Managable {
+public class AudioManagerLogic implements AudioManagable {
 
 	@Override
 	public void stopManager() {

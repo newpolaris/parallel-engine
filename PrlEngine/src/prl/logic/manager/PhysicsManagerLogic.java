@@ -1,8 +1,8 @@
 package prl.logic.manager;
 
-import prl.interf.Managable;
+import prl.interf.managable.PhysicsManagable;
 
-public class PhysicsManagerLogic implements Managable {
+public class PhysicsManagerLogic implements PhysicsManagable {
 
 	@Override
 	public void stopManager() {

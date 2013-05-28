@@ -10,4 +10,6 @@ public interface ScriptManagerInjectable {
 
 	boolean isExitRequested();
 
+	String getBootSceneName();
+
 }

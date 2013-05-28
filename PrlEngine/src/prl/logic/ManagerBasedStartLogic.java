@@ -8,12 +8,12 @@ import prl.injectable.FramePumpInjectable;
 import prl.injectable.ManagersInjectable;
 import prl.injectable.FrameLogic.DoFrameInjectable;
 import prl.interf.InputManagable;
-import prl.interf.Managable;
 import prl.interf.Schedulable;
 import prl.interf.ScriptManagable;
 import prl.interf.TimingManagable;
 import prl.interf.functional.Doable;
 import prl.interf.functional.Retreivable;
+import prl.interf.managable.Managable;
 import prl.util.Parallel;
 
 public class ManagerBasedStartLogic implements FramePumpInjectable {

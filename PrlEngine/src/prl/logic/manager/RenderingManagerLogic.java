@@ -1,17 +1,30 @@
 package prl.logic.manager;
 
-import prl.interf.Managable;
+import prl.injectable.RenderingManagerInjectable;
+import prl.interf.managable.RenderingManagable;
 
-public class RenderingManagerLogic implements Managable {
+public class RenderingManagerLogic implements RenderingManagable {
 
+	public RenderingManagerInjectable renderingInj;
+
+	public RenderingManagerLogic( RenderingManagerInjectable renderingInj )
+	{
+		this.renderingInj = renderingInj;
+		
+	}
+	
 	@Override
-	public void stopManager() {
-		// TODO Auto-generated method stub
+	public void startManager() {
+		this.setBufferingCount( renderingInj.getBufferingCount() );
+	}
 
+	private void setBufferingCount(Object bufferingCount) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void startManager() {
+	public void stopManager() {
 		// TODO Auto-generated method stub
 
 	}

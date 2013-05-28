@@ -1,9 +1,9 @@
 package prl.logic.manager;
 
 import prl.annotation.AbstractLogic;
-import prl.interf.Managable;
+import prl.interf.managable.DiskManagable;
 
-public class DiskManagerLogic implements Managable {
+public class DiskManagerLogic implements DiskManagable {
 
 	@Override @AbstractLogic
 	public void startManager() {

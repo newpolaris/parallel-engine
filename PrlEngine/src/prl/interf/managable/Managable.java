@@ -1,4 +1,4 @@
-package prl.interf;
+package prl.interf.managable;
 
 public interface Managable {
 

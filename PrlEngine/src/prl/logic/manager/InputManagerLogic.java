@@ -1,8 +1,8 @@
 package prl.logic.manager;
 
-import prl.interf.Managable;
+import prl.interf.managable.InputManagable;
 
-public class InputManagerLogic implements Managable {
+public class InputManagerLogic implements InputManagable {
 
 	@Override
 	public void stopManager() {
