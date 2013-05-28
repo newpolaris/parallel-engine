@@ -3,7 +3,6 @@ package prl.logic;
 import prl.annotation.AbstractLogic;
 import prl.injectable.FramePumpInjectable;
 
-@AbstractLogic
 public class FramePumpLogic {
 
 	private FramePumpInjectable framePumpInj;

@@ -16,7 +16,6 @@ import prl.interf.functional.Doable;
 import prl.interf.functional.Retreivable;
 import prl.util.Parallel;
 
-@AbstractLogic
 public class ManagerBasedStartLogic implements FramePumpInjectable {
 
 	// Input objects

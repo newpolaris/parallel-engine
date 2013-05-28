@@ -4,21 +4,22 @@ import prl.annotation.AbstractLogic;
 import prl.injectable.ScriptManagerInjectable;
 import prl.interf.Managable;
 
-@AbstractLogic
 public class ScriptManagerLogic implements Managable {
 
 	ScriptManagerInjectable scriptManagerInj;
-	
-	public ScriptManagerLogic( ScriptManagerInjectable scriptManagerInj ) {
+
+	public ScriptManagerLogic(ScriptManagerInjectable scriptManagerInj) {
 		this.scriptManagerInj = scriptManagerInj;
 	}
-	
-	@Override @AbstractLogic
+
+	@Override
+	@AbstractLogic
 	public void startManager() {
 		scriptManagerInj.bootScript();
 	}
 
-	@Override @AbstractLogic
+	@Override
+	@AbstractLogic
 	public void stopManager() {
 		scriptManagerInj.shutdownScript();
 	}
@@ -37,12 +38,14 @@ public class ScriptManagerLogic implements Managable {
 	public void afterDoFrame() {
 	}
 
-	@Override @AbstractLogic
+	@Override
+	@AbstractLogic
 	public void doFrame() {
 		scriptManagerInj.tick();
 	}
 
-	@Override @AbstractLogic
+	@Override
+	@AbstractLogic
 	public Boolean isExitRequested() {
 		return scriptManagerInj.isExitRequested();
 	}
