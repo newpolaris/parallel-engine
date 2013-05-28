@@ -2,6 +2,11 @@ package prl.interf.managable;
 
 public interface Managable {
 
+	/**
+	 * startManager and stopManager are for managers that doesn't rely on
+	 * FramePumpLogic. They will have to manager synchronization and thread
+	 * scheduling by themselves.
+	 * */
 	void startManager();
 
 	void stopManager();

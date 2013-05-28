@@ -5,24 +5,27 @@ import prl.injectable.ScriptManagerInjectable;
 import prl.interf.Schedulable;
 import prl.interf.managable.SceneManagable;
 import prl.interf.managable.ScriptManagable;
+import prl.interf.managable.ScriptManagerToSceneManagerInterface;
 
 public class ScriptManagerLogic implements ScriptManagable {
 
 	public ScriptManagerInjectable scriptInj;
-	public SceneManagable sceneManager;
 	public Schedulable scheduler;
+	public ScriptManagerToSceneManagerInterface sceneManager;
 
-	public ScriptManagerLogic(ScriptManagerInjectable scriptInj, Schedulable scheduler, SceneManagable sceneManager) {
+	public ScriptManagerLogic(ScriptManagerInjectable scriptInj,
+			Schedulable scheduler,
+			ScriptManagerToSceneManagerInterface sceneManager) {
 		this.scriptInj = scriptInj;
-		this.sceneManager = sceneManager;
 		this.scheduler = scheduler;
+		this.sceneManager = sceneManager;
 	}
 
 	@Override
 	@AbstractLogic
 	public void startManager() {
 		scriptInj.bootScript();
-		this.sceneManager.appendScene( this.scriptInj.getBootSceneName() );
+		this.sceneManager.appendScene(this.scriptInj.getBootSceneName());
 	}
 
 	@Override

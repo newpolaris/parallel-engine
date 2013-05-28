@@ -4,41 +4,39 @@ import java.util.List;
 
 import prl.annotation.AbstractLogic;
 import prl.injectable.SceneManagerInjectable;
-import prl.interf.managable.PhysicsManagable;
-import prl.interf.managable.RenderingManagable;
+import prl.interf.managable.PhysicsManagerToSceneManagerInterface;
 import prl.interf.managable.SceneManagable;
+import prl.interf.managable.SceneManagerToDiskManagerInterface;
+import prl.interf.managable.SceneManagerToRenderingManagerInterface;
+import prl.interf.managable.ScriptManagerToSceneManagerInterface;
 
-public class SceneManagerLogic implements SceneManagable {
+public class SceneManagerLogic implements SceneManagable,
+		ScriptManagerToSceneManagerInterface,
+		PhysicsManagerToSceneManagerInterface {
 
 	public SceneManagerInjectable sceneInj;
-	public RenderingManagable renderingManager;
-	public PhysicsManagable physicsManager;
-	public List<String> currentSceneNames;
-	public List<String> requestedSceneNames;
+	public SceneManagerToDiskManagerInterface diskManager;
+	public SceneManagerToRenderingManagerInterface renderingManager;
 
 	public SceneManagerLogic(SceneManagerInjectable sceneManagerInj,
-			RenderingManagable renderingManager, PhysicsManagable physicsManager) {
+			SceneManagerToRenderingManagerInterface renderingManager,
+			SceneManagerToDiskManagerInterface diskManager) {
 		this.sceneInj = sceneManagerInj;
 		this.renderingManager = renderingManager;
-		this.physicsManager = physicsManager;
+		this.diskManager = diskManager;
 	}
 
 	@Override
 	public void startManager() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void stopManager() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public boolean needToDoEveryFrame() {
-		// SceneManager will need to handle animation every frame.
-		return true;
+		return true; // SceneManager need to handle animation every frame.
 	}
 
 	@Override
@@ -48,27 +46,22 @@ public class SceneManagerLogic implements SceneManagable {
 
 	@Override
 	public void afterDoFrame() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void doFrame() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public Boolean isExitRequested() {
-		// probably scene manager wouldn't need to request exit but it is still
-		// possible.
 		return false;
 	}
 
+	public List<String> currentSceneNames;
+	public List<String> requestedSceneNames;
+
 	@Override
-	public void appendScene(String string) {
-		// TODO Auto-generated method stub
-
+	public void appendScene(String sceneName) {
+		requestedSceneNames.add(sceneName);
 	}
-
 }

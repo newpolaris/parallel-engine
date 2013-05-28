@@ -2,19 +2,17 @@ package prl.logic.manager;
 
 import prl.annotation.AbstractLogic;
 import prl.interf.managable.DiskManagable;
+import prl.interf.managable.SceneManagerToDiskManagerInterface;
 
-public class DiskManagerLogic implements DiskManagable {
+public class DiskManagerLogic implements DiskManagable, SceneManagerToDiskManagerInterface {
 
 	@Override @AbstractLogic
 	public void startManager() {
-		// TODO Auto-generated method stub
-
+		// TODO initialize Collada loader
 	}
 
 	@Override @AbstractLogic
 	public void stopManager() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override @AbstractLogic
@@ -24,20 +22,14 @@ public class DiskManagerLogic implements DiskManagable {
 
 	@Override
 	public void beforeDoFrame() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void doFrame() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void afterDoFrame() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
