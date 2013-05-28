@@ -18,7 +18,6 @@ public class InputManagerLogic implements InputManagable {
 
 	@Override
 	public boolean needToDoEveryFrame() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -42,8 +41,7 @@ public class InputManagerLogic implements InputManagable {
 
 	@Override
 	public Boolean isExitRequested() {
-		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 }

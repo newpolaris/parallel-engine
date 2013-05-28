@@ -31,8 +31,7 @@ public class RenderingManagerLogic implements RenderingManagable {
 
 	@Override
 	public boolean needToDoEveryFrame() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -55,8 +54,7 @@ public class RenderingManagerLogic implements RenderingManagable {
 
 	@Override
 	public Boolean isExitRequested() {
-		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 }

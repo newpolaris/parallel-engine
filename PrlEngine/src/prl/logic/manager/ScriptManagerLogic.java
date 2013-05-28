@@ -2,30 +2,33 @@ package prl.logic.manager;
 
 import prl.annotation.AbstractLogic;
 import prl.injectable.ScriptManagerInjectable;
+import prl.interf.Schedulable;
 import prl.interf.managable.SceneManagable;
 import prl.interf.managable.ScriptManagable;
 
 public class ScriptManagerLogic implements ScriptManagable {
 
-	public ScriptManagerInjectable scriptManagerInj;
+	public ScriptManagerInjectable scriptInj;
 	public SceneManagable sceneManager;
+	public Schedulable scheduler;
 
-	public ScriptManagerLogic(ScriptManagerInjectable scriptManagerInj, SceneManagable sceneManager) {
-		this.scriptManagerInj = scriptManagerInj;
+	public ScriptManagerLogic(ScriptManagerInjectable scriptInj, Schedulable scheduler, SceneManagable sceneManager) {
+		this.scriptInj = scriptInj;
 		this.sceneManager = sceneManager;
+		this.scheduler = scheduler;
 	}
 
 	@Override
 	@AbstractLogic
 	public void startManager() {
-		this.sceneManager.setScene( this.scriptManagerInj.getBootSceneName() );
-		scriptManagerInj.bootScript();
+		scriptInj.bootScript();
+		this.sceneManager.appendScene( this.scriptInj.getBootSceneName() );
 	}
 
 	@Override
 	@AbstractLogic
 	public void stopManager() {
-		scriptManagerInj.shutdownScript();
+		scriptInj.shutdownScript();
 	}
 
 	@Override
@@ -45,13 +48,13 @@ public class ScriptManagerLogic implements ScriptManagable {
 	@Override
 	@AbstractLogic
 	public void doFrame() {
-		scriptManagerInj.tick();
+		scriptInj.tick();
 	}
 
 	@Override
 	@AbstractLogic
 	public Boolean isExitRequested() {
-		return scriptManagerInj.isExitRequested();
+		return scriptInj.isExitRequested();
 	}
 
 }

@@ -19,7 +19,6 @@ public class DiskManagerLogic implements DiskManagable {
 
 	@Override @AbstractLogic
 	public boolean needToDoEveryFrame() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -43,8 +42,7 @@ public class DiskManagerLogic implements DiskManagable {
 
 	@Override
 	public Boolean isExitRequested() {
-		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 }

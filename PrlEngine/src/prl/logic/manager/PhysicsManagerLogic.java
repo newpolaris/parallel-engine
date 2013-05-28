@@ -1,8 +1,17 @@
 package prl.logic.manager;
 
+import prl.injectable.PhysicsManagerInjectable;
 import prl.interf.managable.PhysicsManagable;
 
 public class PhysicsManagerLogic implements PhysicsManagable {
+
+	public PhysicsManagerInjectable physicsInj;
+	
+	@Override
+	public void startManager() {
+		// TODO Auto-generated method stub
+
+	}
 
 	@Override
 	public void stopManager() {
@@ -11,21 +20,14 @@ public class PhysicsManagerLogic implements PhysicsManagable {
 	}
 
 	@Override
-	public void startManager() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public boolean needToDoEveryFrame() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public void beforeDoFrame() {
-		// TODO Auto-generated method stub
-
+		physicsInj.waitForSimulationFromPreviousFrame();
+		physicsInj.startSimulationForNextFrame();
 	}
 
 	@Override
@@ -42,8 +44,7 @@ public class PhysicsManagerLogic implements PhysicsManagable {
 
 	@Override
 	public Boolean isExitRequested() {
-		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 }
