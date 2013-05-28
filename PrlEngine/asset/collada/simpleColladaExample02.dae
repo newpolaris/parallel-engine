@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLADA xmlns="http://www.collada.org/2008/03/COLLADASchema"
+	version="1.5.0">
+
+	<asset>
+		<!-- this example is from the book, Collada: Sailing the gulf of 3D digital 
+			content creation. -->
+		<contributor>
+			<author>Jae Hyuk Kwak</author>
+			<author_email>wrice127@gmail.com</author_email>
+		</contributor>
+		<created>2013-05-27T16:34:00Z</created>
+		<modified>2013-05-27T16:34:00Z</modified>
+	</asset>
+
+	<library_geometries>
+		<geometry id="Globe">
+			<mesh>
+				<source id="GlobeSource">
+					<float_array id="rectangle_object-mesh-positions-array"
+						count="12">-2.000000 -2.000000 0.000000 -2.000000 2.000000 0.000000
+						2.000000
+						-2.000000 0.000000 2.000000 2.000000 0.000000</float_array>
+				</source>
+				<vertices id="GlobeVertices">
+					<input semantic="POSITION" source="#GlobeSource" />
+				</vertices>
+				<polygons count="4" material="Blue" />
+			</mesh>
+		</geometry>
+	</library_geometries>
+
+	<library_effects>
+		<effect id="Shiny">
+			<profile_COMMON>
+				<technique sid="common">
+					<phong>
+						<emission>
+							<color>0.000000 0.000000 0.000000 1</color>
+						</emission>
+						<ambient>
+							<color>0.300000 0.300000 0.300000 1</color>
+						</ambient>
+						<diffuse>
+							<color>0.400000 0.400000 0.400000 1</color>
+						</diffuse>
+						<specular>
+							<color>0.700000 0.700000 0.700000 1</color>
+						</specular>
+						<shininess>
+							<float>16.000000</float>
+						</shininess>
+						<reflective>
+							<color>0.000000 0.000000 0.000000 1</color>
+						</reflective>
+						<reflectivity>
+							<float>0.000000</float>
+						</reflectivity>
+						<transparent opaque="A_ONE">
+							<color>1.000000 1.000000 1.000000 1</color>
+						</transparent>
+						<transparency>
+							<float>1.000000</float>
+						</transparency>
+						<index_of_refraction>
+							<float>1.000000</float>
+						</index_of_refraction>
+					</phong>
+				</technique>
+			</profile_COMMON>
+		</effect>
+	</library_effects>
+
+	<library_lights>
+		<light id="Sun_Light" name="defaultambient">
+			<technique_common>
+				<directional>
+					<color>1.000000 1.000000 1.000000</color>
+				</directional>
+			</technique_common>
+		</light>
+	</library_lights>
+
+	<library_materials>
+		<material id="Shiny_Bye">
+			<instance_effect url="#Shiny" />
+		</material>
+	</library_materials>
+
+	<library_nodes>
+		<node id="Earth">
+			<instance_geometry url="#Globe">
+				<bind_material>
+					<technique_common>
+						<instance_material symbol="Blue" target="#Shiny_Blue" />
+					</technique_common>
+				</bind_material>
+			</instance_geometry>
+		</node>
+		<node id="Sun">
+			<instance_light url="#Sun_Light" />
+		</node>
+	</library_nodes>
+
+	<library_visual_scenes>
+		<visual_scene id="World">
+			<node id="Root">
+				<instance_node url="#Earth" />
+				<node>
+					<!-- matrix sid="Roving" / -->
+					<instance_camera url="#Eyes" />
+				</node>
+			</node>
+		</visual_scene>
+	</library_visual_scenes>
+
+	<scene>
+		<instance_visual_scene url="#World" />
+	</scene>
+
+</COLLADA>
